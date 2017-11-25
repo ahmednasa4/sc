@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+        https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+        * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+        * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+        * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <!-- <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval' https://fonts.gstatic.com/s/materialicons/v29/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2
+        ; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/icon https://cdnjs.cloudflare.com
+        ; media-src *
+        ; img-src 'self' data: content: http://aqabaonline.com https://www.homeleisuredirect.com
+        ;script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com/
+        ;connect-src 'self' 'unsafe-inline' ws://localhost:3000
+        ;"> -->
+        <meta charset="utf-8">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <!--<style type="text/css">
+        </style> -->
+        <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+        <!--Import materialize.css-->
+        
+        <link rel="stylesheet" type="text/css" href="./bower_components/framework7/dist/css/framework7.ios.min.css">
+        <!-- <link rel="stylesheet" type="text/css" href="./bower_components/framework7/dist/css/framework7.material.min.css"> -->
+        <!-- <link rel="stylesheet" type="text/css" href="./bower_components/framework7/dist/css/framework7.material.colors.min.css"> -->
+        <link rel="stylesheet" type="text/css" href="./bower_components/swiper/dist/css/swiper.min.css">
+        <!-- material design Lite -->
+        <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+        <!-- <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script> -->
+        <!-- material design Lite -->
+        
+        <link type="text/css" rel="stylesheet" href="./bower_components/materialize/dist/css/materialize.min.css" media="screen,projection" />
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <title></title>
+    </head>
+    <body>
+        <!-- //////////////////////////////////////////////////////// -->
+        <!-- login  -->
+        <!-- //////////////////////////////////////////////// -->
+        <div id="mainLogin" class="login-screen">
+            <!-- Default view-page layout -->
+            <div class="view">
+                <div class="page">
+                    <!-- -content has additional login-screen content -->
+                    <div class="-content login-screen-content" style="background-color: #fff;">
+                        <div class="login-screen-title ">
+                            <!-- <img src="img/Logomakr_32mRqp.png" width="150px" height="100px" /> -->
+                        </div>
+                        <!-- Login form -->
+                        <form id="loginForm">
+                            <div class="list-block">
+                                <ul>
+                                    <li class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">User #</div>
+                                            <div class="item-input">
+                                                <input type="number" name="studentNumber" placeholder="User Number">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Password</div>
+                                            <div class="item-input">
+                                                <input type="password" name="password" placeholder="Password">
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="list-block">
+                                <ul>
+                                    <li>
+                                        <a href="#" onclick="loginCheck()" class="item-link list-button center button button-big button-round active">Sign In</a>
+                                        <a href="#" onclick="openSignup()" class="item-link list-button ">Sign Up</a>
+                                    </li>
+                                </ul>
+                                <div class="list-block-label"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="signupForm" class="login-screen">
+            <!-- Default view-page layout -->
+            <div class="view">
+                <div class="page">
+                    <!-- page-content has additional login-screen content -->
+                    <div class="page-content login-screen-content" style="background-color: #fff;">
+                        <div class="login-screen-title">
+                            <!-- <img src="img/Logomakr_32mRqp.png" width="150px" height="100px" /> -->
+                        </div>
+                        <!-- Login form -->
+                        <form id="signupForm" class="list-block">
+                            <ul>
+                                <!-- Text inputs -->
+                                <li>
+                                    <div class="item-content">
+                                        <!-- <div class="item-media"><i class="icon f7-icons">person</i></div> -->
+                                        <div class="item-inner">
+                                            <div class="item-title label">User #</div>
+                                            <div class="item-input">
+                                                <input type="number" name="studentNumber" placeholder="User Number">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <!-- <div class="item-media"><i class="icon f7-icons">person</i></div> -->
+                                        <div class="item-inner">
+                                            <div class="item-title label">Name</div>
+                                            <div class="item-input">
+                                                <input type="text" name="name" placeholder="Your name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <!-- <div class="item-media"><i class="icon f7-icons">person</i></div> -->
+                                        <div class="item-inner">
+                                            <div class="item-title label">Phone</div>
+                                            <div class="item-input">
+                                                <input type="number" name="phoneNumber" placeholder="Phone Number">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <!-- <div class="item-media"><i class="icon f7-icons">email</i></div> -->
+                                        <div class="item-inner">
+                                            <div class="item-title label">E-mail</div>
+                                            <div class="item-input">
+                                                <input type="email" name="email" placeholder="E-mail">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <!-- <div class="item-media"><i class="icon f7-icons">email</i></div> -->
+                                        <div class="item-inner">
+                                            <div class="item-title label">Password</div>
+                                            <div class="item-input">
+                                                <input type="password" name="password" placeholder="Password">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </form>
+                        <div class="content-block">
+                            <a href="#" id="btnSignup" onclick="signup()" class="item-link list-button center button button-big button-round active form-to-data">Sign Up</a>
+                            <br>
+                            <a href="#" id="btnSignup" onclick="backFromPanel()" class="item-link list-button center button button-big button-round ">Back</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="mainLogin" class="login-screen">
+            <!-- Default view-page layout -->
+            <div class="view">
+                <div class="page">
+                    <!-- page-content has additional login-screen content -->
+                    <div class="page-content login-screen-content" style="background-color: #fff;">
+                        <div class="login-screen-title ">
+                            <!-- <img src="img/Logomakr_32mRqp.png" width="150px" height="100px" /> -->
+                        </div>
+                        <!-- Login form -->
+                        <form id="loginForm">
+                            <div class="list-block">
+                                <ul>
+                                    <li class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">User #</div>
+                                            <div class="item-input">
+                                                <input type="number" name="studentNumber" placeholder="User Number">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Password</div>
+                                            <div class="item-input">
+                                                <input type="password" name="password" placeholder="Password">
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="list-block">
+                                <ul>
+                                    <li>
+                                        <a href="#" onclick="loginCheck()" class="item-link list-button center button button-big button-round active">Sign In</a>
+                                        <a href="#" onclick="openSignup()" class="item-link list-button ">Sign Up</a>
+                                    </li>
+                                </ul>
+                                <div class="list-block-label"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="myMap" class="login-screen">
+            <!-- Default view-page layout -->
+            <div class="view">
+                <div class="page">
+                    <!-- page-content has additional login-screen content -->
+                    <div class="page-content login-screen-content" style="background-color: #fff;">
+                        <div id="map"></div>
+                        <div id="marker"></div>
+                        <div class="row">
+                            <div class="col s12">
+                                <a id="mapDoneBtn" href="#" class="button active mapButton button-big">Done</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="noConn" class="login-screen">
+            <!-- Default view-page layout -->
+            <div class="view">
+                <div class="page">
+                    <!-- page-content has additional login-screen content -->
+                    <div class="page-content login-screen-content" style="background-color: #fff;">
+                        <div class="login-screen-title ">
+                            <!-- <img src="img/Logomakr_32mRqp.png" width="150px" height="100px" /> -->
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="card blue-grey darken-1">
+                                    <div class="card-content white-text">
+                                        <span class="card-title">No Internet Connection</span>
+                                        <p>Please Connect To Internet</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ///////////////////////////////////////////////////// -->
+        <div class="statusbar-overlay"></div>
+        <div class="panel-overlay"></div>
+        <div class="panel panel-left panel-reveal">
+            <div class="content-block">
+                <div id="panelImage" class="col s12 center-align">
+                    <!-- <img src="img/Logomakr_32mRqp.png" width="150px" height="100px" /> -->
+                </div>
+                <div class="list-block">
+                    <ul>
+                        <li>
+                            <a href="#" onclick="home()" class="item-link item-content">
+                                <div class="item-media"><i class="material-icons">home</i></div>
+                                <div class="item-inner">
+                                    <div class="item-title">Home</div>
+                                    <div class="item-after"></div>
+                                </div>
+                            </a>
+                        </li>
+                        <!-- <li>
+                            <a href="" onclick="shop()" class="item-link item-content">
+                                <div class="item-media"><i class="material-icons">store</i></div>
+                                <div class="item-inner">
+                                    <div class="item-title">Shop</div>
+                                    <div class="item-after"></div>
+                                </div>
+                            </a>
+                        </li> -->
+                        <li>
+                            <a href="" onclick="cart()" class="item-link item-content">
+                                <div class="item-media"><i class="material-icons">shopping_cart</i> </div>
+                                <div class="item-inner">
+                                    <div class="item-title">Cart</div>
+                                    <div class="item-after"></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" onclick="myOrder()" class="item-link item-content">
+                                <div class="item-media"><i class="material-icons">assignment_turned_in</i> </div>
+                                <div class="item-inner">
+                                    <div class="item-title">My Order</div>
+                                    <div class="item-after"></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" onclick="about()" class="item-link item-content">
+                                <div class="item-media"><i class="material-icons">assignment</i></div>
+                                <div class="item-inner">
+                                    <div class="item-title">About</div>
+                                    <div class="item-after"></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="logout()" class="item-link item-content">
+                                <div class="item-media"><i class="material-icons">power_settings_new</i></div>
+                                <div class="item-inner">
+                                    <div class="item-title">Logout</div>
+                                    <div class="item-after"></div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="views">
+            <div class="view view-main">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="center sliding" style="font-family: SansitaOne;color:#df7071;">SMARTCART</div>
+                        <div class="right">
+                            <a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="pages  navbar-through toolbar-through">
+                    <!-- Page, "data-page" contains page name -->
+                    <div data-page="index" class="page">
+                        <!-- Search Bar -->
+                        <form class="searchbar">
+                            <div class="searchbar-input">
+                                <input id='searchBox' type="search" placeholder="Search"> <!-- I change All input[type=search] to input[type=msearch] in matirialize.min.css to prevent it's css -->
+                                 <a href="#" class="searchbar-clear"></a>
+                                 <button id='searchBtn'></button>
+                            </div>
+                            <a href="#" class="searchbar-cancel">Cancel</a>
+                        </form>
+                         <div class="searchbar-overlay"></div>
+                        <!-- Scrollable page content -->
+                        <div class="page-content">
+                            <!-- //////////////////////////////////////
+                            content
+                            ////////////////////////////////////// -->
+                            <div class="row" style="margin-bottom: 0;">
+                                <div class="col s12" style="padding: 0px;">
+                                    <!--  /////////////////////////////////////// -->
+                                    <!-- Slider main container -->
+                                    <div class="swiper-container">
+                                        <!-- Additional required wrapper -->
+                                        <div class="swiper-wrapper">
+                                            <!-- Slides -->
+                                            <div class="swiper-slide"><img class="responsive-img" src="./img/slide1.jpg"></div>
+                                            <div class="swiper-slide"><img class="responsive-img" src="./img/slide2.jpg"></div>
+                                            <div class="swiper-slide"><img class="responsive-img" src="./img/slide3.jpg"></div>
+                                        </div>
+                                        <!-- If we need pagination -->
+                                        <!-- <div class="swiper-pagination"></div> -->
+                                        <!-- If we need navigation buttons -->
+                                        <!-- <div class="swiper-button-prev"></div>
+                                        <div class="swiper-button-next"></div> -->
+                                        <!-- If we need scrollbar -->
+                                        <!-- <div class="swiper-scrollbar"></div> -->
+                                    </div>
+                                    <!-- //////////////////////////////////////// -->
+                                </div>
+                            </div>
+                            <br>
+                            <div id="productCategories" class="row">
+                                
+                            </div>
+                            <!--  ////////////////////////////////////// -->
+                        </div>
+                    </div>
+                </div>
+                <div id="mainToolbar" class="toolbar tabbar">
+                    <div class="toolbar-inner">
+                        <a href="#tab1" onclick="cart()" class="tab-link active">
+                            <i class="material-icons cartIcon">shopping_cart</i>
+                            <!-- <p class="badge bg-green" style="position: fixed; margin-left: 20px;">15</p> -->
+                        </a>
+                        <a href="#tab2" class="tab-link active" style="margin-right: 30px;">
+                            <span>Total price</span> <span id="totalPrice">0</span>
+                        </a>
+                        <a href="#tab3" class="tab-link active">
+                            <input type="button" value="Checkout" onclick="checkout()" class="button button-round active" style="color: white;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--////////////////////////////////////////////////////////
+        JavaScript
+        //////////////////////////////////////////////////////// -->
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="./bower_components/framework7/dist/js/framework7.min.js"></script>
+        <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+        
+        <script type="text/javascript" src="./bower_components/swiper/dist/js/swiper.min.js"></script>
+        <!--  <script type="text/javascript" src="./bower_components/framework7/dist/js/framework7.min.js.map"></script> -->
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDht5H3eiIEBn1uZaztkVcH8rglq-gaXVo">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+        <script type="text/javascript" src="./bower_components/materialize/dist/js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
